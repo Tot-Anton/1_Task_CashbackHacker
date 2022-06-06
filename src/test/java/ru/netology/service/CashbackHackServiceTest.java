@@ -33,6 +33,28 @@ public class CashbackHackServiceTest {
         org.testng.Assert.assertEquals(service.remain(1001), 999);
     }
 
+    @org.testng.annotations.Test
+    //докупить на 1000
+    public void BuyByThousand() {
+        org.testng.Assert.assertEquals(service.remain(0), 1000);
+    }
+
+    @org.testng.annotations.Test
+    //докупить на 700
+    public void BuyForSevenHundred() {
+        org.testng.Assert.assertEquals(service.remain(300), 700);
+    }
+
+    @org.testng.annotations.Test
+    //должен вызвать исключение
+    public void MustCallUpException() {
+        org.testng.Assert.assertThrows(RuntimeException.class, () -> {
+            service.remain(-1);
+        });
+    }
+
+
+
 
 
 }
